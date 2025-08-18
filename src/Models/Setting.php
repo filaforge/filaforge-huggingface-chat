@@ -5,18 +5,24 @@ namespace Filaforge\HuggingfaceChat\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Conversation extends Model
+class Setting extends Model
 {
-	protected $table = 'hf_conversations';
+	protected $table = 'hf_settings';
 
 	protected $fillable = [
 		'user_id',
-		'title',
-		'messages',
+		'model_id',
+		'base_url',
+		'use_openai',
+		'stream',
+		'timeout',
+		'system_prompt',
 	];
 
 	protected $casts = [
-		'messages' => 'array',
+		'use_openai' => 'boolean',
+		'stream' => 'boolean',
+		'timeout' => 'integer',
 	];
 
 	public function user(): BelongsTo
